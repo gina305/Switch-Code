@@ -1,0 +1,53 @@
+<div class="row border-top py-4">
+      <div class="col-lg-4" id="chrome">
+        <h3>curl from Google Chrome</h3>
+        <ol>
+          <li>Open the <a href="https://developer.chrome.com/docs/devtools/network/">Network</a> tab in the <a href="https://developer.chrome.com/docs/devtools/overview/">DevTools</a></li>
+          <li>Right click (or Ctrl-click) a request</li>
+          <li>Click "Copy" → <span class="not-windows">"Copy as cURL"</span><span class="windows d-none">"Copy as cURL (<b>bash</b>)"</span></li>
+          <li>Paste it in the <b>curl command</b> box above</li>
+        </ol>
+        <p>
+          This also works in <a class="to-safari" href="#">Safari</a> and <a class="to-firefox" href="#">Firefox</a>.
+        </p>
+        <p class="d-none d-lg-block pt-3">
+          <b>Warning</b>: the copied command may contain cookies or other sensitive data. Be careful if you're sharing the command with other people, sending someone your cookie for a website is like sending them your password.
+        </p>
+      </div>
+      <div class="col-lg-4 d-none" id="safari">
+        <h3>curl from Safari</h3>
+        <ol>
+          <li>Open the <a href="https://support.apple.com/en-us/guide/safari-developer/dev1f3525e58/mac">Network</a> tab in the <a href="https://support.apple.com/en-us/guide/safari-developer/dev073038698/mac">Developer Tools</a></li>
+          <li>Right click (or Ctrl-click or two-finger click) a request</li>
+          <li>Click "Copy as cURL" in the dropdown menu</li>
+          <li>Paste it in the <b>curl command</b> box above</li>
+        </ol>
+        <p>
+          This also works in <a class="to-chrome" href="#">Chrome</a> and <a class="to-firefox" href="#">Firefox</a>.
+        </p>
+        <p class="d-none d-lg-block pt-3">
+          <b>Warning</b>: the copied command may contain cookies or other sensitive data. Be careful if you're sharing the command with other people, sending someone your cookie for a website is like sending them your password.
+        </p>
+      </div>
+      <div class="col-lg-4 d-none" id="firefox">
+        <h3>curl from Firefox</h3>
+        <ol>
+          <li>Open the <a href="https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor">Network Monitor</a> tab in the <a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li>
+          <li>Right click (or Ctrl-click) a request</li>
+          <li>Click "Copy" → "Copy as cURL"</li>
+          <li>Paste it in the <b>curl command</b> box above</li>
+        </ol>
+        <p>
+          This also works in <a class="to-chrome" href="#">Chrome</a> and <a class="to-safari" href="#">Safari</a>.
+        </p>
+        <p class="d-none d-xl-block pt-3">
+          <b>Warning</b>: the copied command may contain cookies or other sensitive data. Be careful if you're sharing the command with other people, sending someone your cookie for a website is like sending them your password.
+        </p>
+      </div>
+      <div class="col-lg-8">
+        <picture id="screenshot">
+          <source srcset="/images/chrome.webp, /images/chrome@2x.webp 2x" type="image/webp">
+          <img class="img-fluid mx-auto d-block" src="/images/chrome.png" srcset="/images/chrome@2x.png 2x" width="648" height="354" alt="screenshot of browser DevTools showing how to copy a network request as curl">
+        </picture>
+      </div>
+    </div>
