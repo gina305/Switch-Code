@@ -34,7 +34,8 @@
     .then(response => {
       const jobAds = response.data.records.map(record => ({
         title: record.fields['Job Title'],
-        description: record.fields['Job Description']
+        description: record.fields['Job Description'],
+        link: record.fields['Link']
       }));
 
       jobAds.forEach(job => {
