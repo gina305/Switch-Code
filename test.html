@@ -15,38 +15,14 @@
 
   <button id="request-button">Make Request</button>
 
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script>
- 
-    // Replace <YOUR_API_KEY> with your personal access token
-    const apiKey = "keyUKafa60cDwHmoq";
+  <script src="/js/blog.js"></script>
+  
 
-    // Replace <YOUR_BASE_ID> with your Airtable base ID
-    const baseId = "app32VEPUDOKJwj8";
+  <div class="container mt-5">
+      <div id="job-cards" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"></div>
+    </div>
 
-    // Replace <YOUR_TABLE_NAME> with the name of the Airtable table you want to retrieve records from
-    const tableName = "tbldAB3RXAMBjUiQ9";
-    // Initialize Airtable API endpoint
-    const endpoint = `https://api.airtable.com/v0/${baseId}/${tableName}`;
+  </body>
+  </html>
 
-    // Initialize request button
-    const requestButton = document.getElementById("request-button");
-
-    // Make request to Airtable API when button is clicked
-    requestButton.addEventListener("click", () => {
-      axios.get(endpoint, {
-        headers: {
-          "Authorization": `Bearer ${apiKey}`
-        }
-      })
-      .then(response => {
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    });
-  </script>
-
-</body>
-</html>
+    
