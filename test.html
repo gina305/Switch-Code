@@ -1,54 +1,39 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <h2>Airtable Record Carousel</h2>
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Search Records" aria-label="Search Records" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-primary" type="button">Search</button>
-        </div>
-      </div>
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Record 1</h5>
-                <p class="card-text">This is the first Airtable record.</p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Record 2</h5>
-                <p class="card-text">This is the second Airtable record.</p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Record 3</h5>
-                <p class="card-text">This is the third Airtable record.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Airtable Records</title>
+</head>
+<body>
+  <h1>Airtable Records</h1>
+  <ul id="records"></ul>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+  
+  require('dotenv').config();
+
+    const apiKey = process.env.API_KEY;
+    const baseId = process.env.BASE_ID;
+    const tableName = process.env.TABLE_NAME;
+
+    const endpoint = `https://api.airtable.com/v0/${baseId}/${tableName}`;
+
+    axios.get(endpoint, {
+      headers: { Authorization: `Bearer ${apiKey}` }
+    })
+      .then(response => {
+        const records = response.data.records;
+
+        records.forEach(record => {
+          const listItem = document.createElement('li');
+          listItem.innerText = record.fields.Name;
+          document.getElementById('records').appendChild(listItem);
+        });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  </script>
+</body>
+</html>
