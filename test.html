@@ -8,9 +8,9 @@
 			$('#search-form').submit(function(event) {
 				event.preventDefault();
 				var searchTerm = $('#search-term').val();
-				var airtableUrl = "https://api.airtable.com/v0/YOUR_BASE_ID/YOUR_TABLE_NAME?filterByFormula=SEARCH('" + searchTerm + "', {YOUR_FIELD_NAME})";
+				var airtableUrl = "https://api.airtable.com/v0/app32VEPUDOKJwj8t/tblxIhDyoscjELMJm?filterByFormula=SEARCH('" + searchTerm + "', Title)";
 				var headers = {
-					"Authorization": "Bearer YOUR_API_KEY"
+					"Authorization": "keyUKafa60cDwHmoq"
 				};
 				$.ajax({
 					url: airtableUrl,
@@ -19,7 +19,7 @@
 					success: function(data) {
 						$('#results').empty();
 						data.records.forEach(function(record) {
-							$('#results').append("<div>" + record.fields.YOUR_FIELD_NAME + "</div>");
+							$('#results').append("<div>" + record.fields.Title + "</div>");
 						});
 					}
 				});
