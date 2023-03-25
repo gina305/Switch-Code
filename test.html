@@ -39,7 +39,7 @@
 
       jobAds.forEach(job => {
 
-        if(job.status == "Yes"){
+        if(job.status = "Yes"){
         const jobCard = document.createElement('div');
         jobCard.classList.add('col');
         jobCard.innerHTML = `
@@ -50,10 +50,10 @@
               <a href="${job.link}" class="btn btn-primary">Apply Now</a>
             </div>
           </div>
-        `;}
+        `;
         jobCardContainer.appendChild(jobCard);
       }
-      );
+      });
     })
     .catch(error => {
       console.error(error);
