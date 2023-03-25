@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 const searchBox = document.getElementById('searchBox');
 const resultsContainer = document.getElementById('resultsContainer');
 
