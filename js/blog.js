@@ -19,9 +19,16 @@ base(tableName).select({
 }).eachPage(function page(records, fetchNextPage) {
   // Iterate through records
   records.forEach(function(record) {
-
-    console.log(record.get('Name'));
-
+    
+    const status = record.get('Active');
+    const link = record.get('Link');
+    const img = record.get('Active');
+    const text = record.get('Active');
+    
+    if(status == "Yes"){
+        console.log(status);
+    }
+  
 
   });
 
