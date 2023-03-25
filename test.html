@@ -5,35 +5,52 @@
   <title>Airtable Records</title>
 </head>
 <body>
+
   <h1>Airtable Records</h1>
+
   <ul id="records"></ul>
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
 
-  import {} from 'dotenv/config';
-  dotenv.config();
-    const apiKey = process.env.API_KEY;
-    const baseId = process.env.BASE_ID;
-    const tableName = process.env.TABLE_NAME;
+API_KEY=pat4NroZNBTGPnjRG.980b56eaf0761ce6ecbec6e1539af48705115f369f5e34a1802ccb30c148abc5
+BASE_ID=app32VEPUDOKJwj8
+TABLE_NAME=tbldAB3RXAMBjUiQ9
 
+    // Replace <YOUR_API_KEY> with your personal access token
+    const apiKey = "pat4NroZNBTGPnjRG.980b56eaf0761ce6ecbec6e1539af48705115f369f5e34a1802ccb30c148abc5";
+
+    // Replace <YOUR_BASE_ID> with your Airtable base ID
+    const baseId = "app32VEPUDOKJwj8";
+
+    // Replace <YOUR_TABLE_NAME> with the name of the Airtable table you want to retrieve records from
+    const tableName = "tbldAB3RXAMBjUiQ9";
+
+    // Initialize Airtable API endpoint
     const endpoint = `https://api.airtable.com/v0/${baseId}/${tableName}`;
 
-    axios.get(endpoint, {
-      headers: { Authorization: `Bearer ${apiKey}` }
-    })
-      .then(response => {
-        const records = response.data.records;
+    // Initialize list of records
+    const recordsList = document.getElementById("records");
 
-        records.forEach(record => {
-          const listItem = document.createElement('li');
-          listItem.innerText = record.fields.Name;
-          document.getElementById('records').appendChild(listItem);
-        });
-      })
-      .catch(error => {
-        console.error(error);
+    // Retrieve records from Airtable
+    axios.get(endpoint, {
+      headers: {
+        "Authorization": `Bearer ${apiKey}`
+      }
+    })
+    .then(response => {
+      const records = response.data.records;
+      // Iterate through records and add to list
+      records.forEach(record => {
+        const li = document.createElement("li");
+        li.innerText = record.fields.name;
+        recordsList.appendChild(li);
       });
+    })
+    .catch(error => {
+      console.log(error);
+    });
   </script>
+
 </body>
 </html>
