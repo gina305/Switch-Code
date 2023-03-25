@@ -38,6 +38,8 @@
       }));
 
       jobAds.forEach(job => {
+
+        if(job.status == "Yes"){
         const jobCard = document.createElement('div');
         jobCard.classList.add('col');
         jobCard.innerHTML = `
@@ -50,6 +52,7 @@
           </div>
         `;
         jobCardContainer.appendChild(jobCard);
+      }
       });
     })
     .catch(error => {
