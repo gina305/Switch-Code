@@ -12,7 +12,7 @@ const tableName = "tbldAB3RXAMBjUiQ9";
 
 
 // Initialize Airtable API endpoint
-const endpoint = `https://api.airtable.com/v0/${baseId}/${tableName}`;
+const endpoint = `https://api.airtable.com/v2/${baseId}/${tableName}`;
 
 // Make HTTP request to Airtable API to retrieve records
 axios.get(endpoint, {
