@@ -12,6 +12,13 @@ const tableName = "tblxIhDyoscjELMJm";
 // Initialize Airtable client
 const base = new Airtable({ apiKey: apiKey }).base(baseId);
 
+// Lisrt of ads
+const jobAds = []
+
+// Target
+const jobCardContainer = document.getElementById("job-cards");
+
+
 // Retrieve records from Airtable
 base(tableName).select({
   maxRecords: 10,
@@ -20,13 +27,41 @@ base(tableName).select({
   // Iterate through records
   records.forEach(function(record) {
     
+    //Save values
+    const name = record.get('Name');
     const status = record.get('Active');
     const link = record.get('Link');
-    const img = record.get('Active');
-    const text = record.get('Active');
+    const img = record.get('Image');
+    const sub = record.get('Sub-text');
+
+//Create new obj
+    const myObj = {
+      name: name,
+      status: status,
+      link:link,
+      img: img,
+      subtext: sub
+    };
+    
     
     if(status == "Yes"){
-        console.log(status);
+      
+        jobAds.push(myObj);
+        console.log(jobAds);
+
+        const jobCard = document.createElement("div");
+      jobCard.classList.add("col");
+      jobCard.innerHTML = `
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">${job.name}</h5>
+            <p class="card-text">${job.subtext}</p>
+            <a href={job.link} class="btn btn-primary">Apply Now</a>
+          </div>
+        </div>
+      `;
+      jobCardContainer.appendChild(jobCard);
+
     }
   
 
