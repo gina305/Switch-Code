@@ -18,7 +18,7 @@ searchBox.addEventListener('input', async () => {
 });
 
 async function fetchAirtableRecords(searchTerm) {
-    const response = await axios.get(`${airtableApiUrl}?filterByFormula=OR(FIND("${searchTerm}", {Field 1}), FIND("${searchTerm}", {Field 2}))`, {
+    const response = await axios.get(`${airtableApiUrl}?filterByFormula=OR(FIND("${searchTerm}", {Title}), FIND("${searchTerm}", {'Publish Date'}))`, {
         headers: {
             'Authorization': `Bearer ${airtableApiKey}`
         }
