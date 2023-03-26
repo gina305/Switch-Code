@@ -111,17 +111,17 @@
 
       jobAds.forEach(job => {
 
-        console.log(job.img[0].url);
+      
 
         if(job.active = "Yes"){
         const jobCard = document.createElement('div');
         jobCard.classList.add('col');
         jobCard.innerHTML = `
 <div class="card" style="width: 18rem;"> View 
-  <img class="card-img-top" src=${job.img} alt="Card image cap">
+  <img class="card-img-top" src=${job.img[0].url} alt="Card image cap">
   <div class="card-body">
     <p class="card-text">${job.title}</p>
-<a href="${job.img[0].url}" class="btn btn-primary"></a>
+<a href="${job.link}" class="btn btn-primary"></a>
   </div>
 </div>
         `;
