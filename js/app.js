@@ -1,8 +1,8 @@
- 
+ require("dotenv").config();
+  
  export default function foo() {
     
-    require("dotenv").config();
-  
+    
   const apiKey = process.env.Key; // replace with your Airtable API key
     const baseId =  process.env.BASE_ID; // replace with your Airtable base ID
     const tableName =  process.env.TABLE_NAME; // replace with the name of your Airtable table
