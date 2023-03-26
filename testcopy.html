@@ -12,6 +12,76 @@
     .card-text {
       font-size: 1rem;
     }
+    body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+			background-color: #f5f5f5;
+		}
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+			max-width: 1000px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+		.card {
+			position: relative;
+			width: 300px;
+			height: 200px;
+			perspective: 1000px;
+			margin: 20px;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+			transition: transform 0.5s;
+			transform-style: preserve-3d;
+		}
+		.card:hover {
+			transform: rotateY(180deg);
+		}
+		.card .front,
+		.card .back {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			backface-visibility: hidden;
+		}
+		.card .front {
+			background-color: #fff;
+			padding: 20px;
+			box-sizing: border-box;
+			border-radius: 5px;
+			text-align: center;
+			z-index: 2;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		.card .back {
+			background-color: #f9f9f9;
+			padding: 20px;
+			box-sizing: border-box;
+			border-radius: 5px;
+			text-align: center;
+			transform: rotateY(180deg);
+			z-index: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		.card h2 {
+			margin: 0;
+			font-size: 24px;
+			font-weight: bold;
+		}
+		.card p {
+			margin: 0;
+			font-size: 16px;
+			margin-top: 10px;
+		}
   </style>
 </head>
 <body>
@@ -34,7 +104,8 @@
     .then(response => {
       const jobAds = response.data.records.map(record => ({
         title: record.fields['Title'],
-        pubDate: record.fields['Publish Date']
+        pubDate: record.fields['Publish Date'],
+        link: record.fields['Link']
       }));
 
       jobAds.forEach(job => {
@@ -43,12 +114,20 @@
         const jobCard = document.createElement('div');
         jobCard.classList.add('col');
         jobCard.innerHTML = `
-          <div class="card border-0 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">${job.title}</h5>
-              <p class="card-text">${job.pubDate}</p>
-            </div>
-          </div>
+        
+
+
+          <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">${job.title}</h5>
+    <p class="card-text">${job.pubDate}</p>
+    <a href=${link} class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+
+
         `;
         jobCardContainer.appendChild(jobCard);
       }
