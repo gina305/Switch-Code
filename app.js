@@ -1,4 +1,4 @@
-//  require("dotenv").config();
+require("dotenv").config();
  
  export default function foo() {
   const apiKey = process.env.Key; // replace with your Airtable API key
