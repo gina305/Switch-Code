@@ -1,4 +1,4 @@
-const Airtable = require('airtable');
+
 const base = new Airtable({ apiKey: 'keyUKafa60cDwHmoq' }).base('app32VEPUDOKJwj8t');
 
 base('tblxIhDyoscjELMJm').select({
