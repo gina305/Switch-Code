@@ -115,12 +115,11 @@
         const jobCard = document.createElement('div');
         jobCard.classList.add('col');
         jobCard.innerHTML = `
-          <div class="card" style="width: 18rem;">
-  <img src="${job.img}" class="card-img-top" alt="${job.title}">
+<div class="card" style="width: 18rem;"> <a href="${job.link}" class="btn btn-primary"></a>
+  <img class="card-img-top" src="${job.img}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">${job.title}</h5>
-    <p class="card-text">${job.pubDate}</p>
-    <a href="${job.link}" class="btn btn-primary">Read</a>
+    <p class="card-text">${job.title}</p>
+
   </div>
 </div>
         `;
