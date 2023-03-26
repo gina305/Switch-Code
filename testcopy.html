@@ -105,7 +105,8 @@
       const jobAds = response.data.records.map(record => ({
         title: record.fields['Title'],
         pubDate: record.fields['Publish Date'],
-        link: record.fields['Link']
+        link: record.fields['Link'],
+        img: record.fields['image']
       }));
 
       jobAds.forEach(job => {
@@ -114,16 +115,8 @@
         const jobCard = document.createElement('div');
         jobCard.classList.add('col');
         jobCard.innerHTML = `
-          <div class="card border-0 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">${job.title}</h5>
-              <p class="card-text">${job.pubDate}</p>
-            </div>
-          </div>
-
-
           <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
+  <img src="${job.img}" class="card-img-top" alt="${job.title}">
   <div class="card-body">
     <h5 class="card-title">${job.title}</h5>
     <p class="card-text">${job.pubDate}</p>
