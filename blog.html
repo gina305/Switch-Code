@@ -224,57 +224,7 @@
   <script src="assets/gallery/script.js"></script>
   <script src="assets/formoid/formoid.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js" integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-  <script>  
-  require("dotenv").config();
-  
-  const apiKey = process.env.Key; // replace with your Airtable API key
-    const baseId =  process.env.BASE_ID; // replace with your Airtable base ID
-    const tableName =  process.env.TABLE_NAME; // replace with the name of your Airtable table
-
-    const jobCardContainer = document.getElementById('job-cards');
-
-    axios.get(`https://api.airtable.com/v0/${baseId}/${tableName}?view=Grid%20view`, {
-      headers: { 'Authorization': `Bearer ${apiKey}` }
-    })
-    .then(response => {
-      const jobAds = response.data.records.map(record => ({
-        title: record.fields['Title'],
-        pubDate: record.fields['Publish Date'],
-        link: record.fields['Link'],
-        img: record.fields['image']
-      }));
-
-      jobAds.forEach(job => {
-
-      
-
-        if(job.active = "Yes"){
-        const jobCard = document.createElement('div');
-        jobCard.classList.add('col');
-        jobCard.innerHTML = `
-
-<div class="card-container" style="flex: 1 0 30%;
-  margin: 1%;">
-  <div class="card text-center" ">
-    <img class="card-img-top" src=${job.img[0].url} alt=${job.title}>
-    <div class="card-body">
-      <p class="card-text">${job.title}</p>
-      <a href="${job.link}" class="btn btn-primary"> Read </a>
-    </div>
-  </div>
-</div>
-
-
-        `;
-        jobCardContainer.appendChild(jobCard);
-      }
-      });
-    })
-    .catch(error => {
-      console.error(error);
-    });
-  </script>
+  <script type="module" src="js/app.js"></script>
   
   
  <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>

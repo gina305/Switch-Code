@@ -1,42 +1,54 @@
-const axios = require('axios');
+ 
+ export default function foo() {
+    
+    require("dotenv").config();
+  
+  const apiKey = process.env.Key; // replace with your Airtable API key
+    const baseId =  process.env.BASE_ID; // replace with your Airtable base ID
+    const tableName =  process.env.TABLE_NAME; // replace with the name of your Airtable table
 
-const searchBox = document.getElementById('searchBox');
-const resultsContainer = document.getElementById('resultsContainer');
+    const jobCardContainer = document.getElementById('job-cards');
 
-const airtableApiKey = 'keyUKafa60cDwHmoq';
-const airtableBaseId = 'app32VEPUDOKJwj8t';
-const airtableTableName = 'tblxIhDyoscjELMJm';
+    axios.get(`https://api.airtable.com/v0/${baseId}/${tableName}?view=Grid%20view`, {
+      headers: { 'Authorization': `Bearer ${apiKey}` }
+    })
+    .then(response => {
+      const jobAds = response.data.records.map(record => ({
+        title: record.fields['Title'],
+        pubDate: record.fields['Publish Date'],
+        link: record.fields['Link'],
+        img: record.fields['image']
+      }));
 
-const airtableApiUrl = `https://api.airtable.com/v0/${airtableBaseId}/${airtableTableName}`;
+      jobAds.forEach(job => {
 
-searchBox.addEventListener('input', async () => {
-    const searchTerm = searchBox.value.trim();
-    resultsContainer.innerHTML = '';
+      
 
-    if (searchTerm.length > 0) {
-        const records = await fetchAirtableRecords(searchTerm);
-        renderAirtableRecords(records);
-    }
-});
+        if(job.active = "Yes"){
+        const jobCard = document.createElement('div');
+        jobCard.classList.add('col');
+        jobCard.innerHTML = `
 
-async function fetchAirtableRecords(searchTerm) {
-    const response = await axios.get(`${airtableApiUrl}?filterByFormula=OR(FIND("${searchTerm}", {Field 1}), FIND("${searchTerm}", {Field 2}))`, {
-        headers: {
-            'Authorization': `Bearer ${airtableApiKey}`
-        }
-    });
+<div class="card-container" style="flex: 1 0 30%;
+  margin: 1%;">
+  <div class="card text-center" ">
+    <img class="card-img-top" src=${job.img[0].url} alt=${job.title}>
+    <div class="card-body">
+      <p class="card-text">${job.title}</p>
+      <a href="${job.link}" class="btn btn-primary"> Read </a>
+    </div>
+  </div>
+</div>
 
-    return response.data.records;
-}
 
-function renderAirtableRecords(records) {
-    records.forEach(record => {
-        const resultDiv = document.createElement('div');
-        resultDiv.classList.add('result');
-        resultDiv.innerHTML = `
-            <h2>${record.fields['Title']}</h2>
-            <p>${record.fields['Publish Date']}</p>
         `;
-        resultsContainer.appendChild(resultDiv);
+        jobCardContainer.appendChild(jobCard);
+      }
+      });
+    })
+    .catch(error => {
+      console.error(error);
     });
 }
+
+export const blogImport = foo ();
