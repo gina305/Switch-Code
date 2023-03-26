@@ -30,34 +30,8 @@
   
 </head>
 <body>
-    <script>
-        function loadBlogPosts() {
-          const Airtable = require('airtable');
-          const base = new Airtable({ apiKey: 'keyUKafa60cDwHmoq' }).base('app32VEPUDOKJwj8t');
-        
-          base('tblxIhDyoscjELMJm').select({
-            // Add any additional filtering or sorting options here
-          }).eachPage((records, fetchNextPage) => {
-            // Process each page of records
-            records.forEach(record => {
-              // Create a new post element for each record
-              const post = document.createElement('div');
-              post.innerHTML = `
-                <h2>${record.get('Title')}</h2>
-                <p>${record.get('Publish Date')}</p>
-                <!-- Add any additional fields from your Airtable table -->
-              `;
-              // Add the post to the container element
-              document.getElementById('blog-posts').appendChild(post);
-            });
-        
-            // Fetch the next page of records, if there are more
-            fetchNextPage();
-          }, error => {
-            console.error(error);
-          });
-        }
-        </script>
+    <script src="https://cdn.jsdelivr.net/npm/airtable/dist/airtable.browser.js"></script>
+
   <section data-bs-version="5.1" class="menu cid-s48OLK6784" once="menu" id="menu1-v">
     
     <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
@@ -174,7 +148,34 @@
   
     <div id="blog-posts" onload="loadBlogPosts()"></div>
 
+<script>
+function loadBlogPosts() {
+  const Airtable = require('airtable');
+  const base = new Airtable({ apiKey: 'keyUKafa60cDwHmoq' }).base('app32VEPUDOKJwj8t');
 
+  base('tblxIhDyoscjELMJm').select({
+    // Add any additional filtering or sorting options here
+  }).eachPage((records, fetchNextPage) => {
+    // Process each page of records
+    records.forEach(record => {
+      // Create a new post element for each record
+      const post = document.createElement('div');
+      post.innerHTML = `
+        <h2>${record.get('Title')}</h2>
+        <p>${record.get('Publish Date')}</p>
+        <!-- Add any additional fields from your Airtable table -->
+      `;
+      // Add the post to the container element
+      document.getElementById('blog-posts').appendChild(post);
+    });
+
+    // Fetch the next page of records, if there are more
+    fetchNextPage();
+  }, error => {
+    console.error(error);
+  });
+}
+</script>
 
 
   </section>
