@@ -34,7 +34,7 @@
     .then(response => {
       const jobAds = response.data.records.map(record => ({
         title: record.fields['Title'],
-        description: record.fields['Publish Date']
+        pdate: record.fields['Publish Date']
       }));
 
       jobAds.forEach(job => {
@@ -44,7 +44,7 @@
           <div class="card border-0 shadow-sm">
             <div class="card-body">
               <h5 class="card-title">${job.title}</h5>
-              <p class="card-text">${job.description}</p>
+              <p class="card-text">${job.pdate}</p>
               <a href="#" class="btn btn-primary">Apply Now</a>
             </div>
           </div>
