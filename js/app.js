@@ -34,8 +34,8 @@ function renderAirtableRecords(records) {
         const resultDiv = document.createElement('div');
         resultDiv.classList.add('result');
         resultDiv.innerHTML = `
-            <h2>${record.fields['Field 1']}</h2>
-            <p>${record.fields['Field 2']}</p>
+            <h2>${record.fields['Title']}</h2>
+            <p>${record.fields['Publish Date']}</p>
         `;
         resultsContainer.appendChild(resultDiv);
     });
