@@ -1,6 +1,5 @@
-// require("dotenv").config();
-import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
-dotenv.config()
+require("dotenv").config();
+
 
  export default function foo() {
   const apiKey = process.env.KEY; // replace with your Airtable API key
