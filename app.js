@@ -1,18 +1,20 @@
-  import axios from './*/axios'
- export default function foo() {
+  import axios from '/axios'
+  const dotenv = require('dotenv');
+dotenv.config();
+  export default function foo() {
 
-  require("dotenv").config();
+
   console.log(process.env + "test")
 
-  const apiKey = process.env.MYKEY; // replace with your Airtable API key
-  console.log(apiKey)
-  const baseId =  process.env.MYBASE_ID; // replace with your Airtable base ID
-    const tableName =  process.env.MYTABLE_NAME; // replace with the name of your Airtable table
+  const apiKey1 = process.env.MY_KEY; // replace with your Airtable API key
+  console.log("apiKey1")
+  const baseId =  process.env.MY_BASEID; // replace with your Airtable base ID
+    const tableName =  process.env.MY_TABLENAME; // replace with the name of your Airtable table
 
     const jobCardContainer = document.getElementById('job-cards');
 
     axios.get(`https://api.airtable.com/v0/${baseId}/${tableName}?view=Grid%20view`, {
-      headers: { 'Authorization': `Bearer ${apiKey}` }
+      headers: { 'Authorization': `Bearer ${apiKey1}` }
     })
     .then(response => {
       const jobAds = response.data.records.map(record => ({
@@ -30,19 +32,13 @@
         const jobCard = document.createElement('div');
         jobCard.classList.add('col');
         jobCard.innerHTML = `
-
-<div class="card-container" style="flex: 1 0 30%;
-  margin: 1%;">
-  <div class="card text-center" ">
-    <img class="card-img-top" src=${job.img[0].url} alt=${job.title}>
-    <div class="card-body">
-      <p class="card-text">${job.title}</p>
-      <a href="${job.link}" class="btn btn-primary"> Read </a>
-    </div>
+<div class="card text-center" style="width: 18rem;"> 
+  <img class="card-img-top" src=${job.img[0].url} alt="Card image cap">
+  <div class="card-body">
+    <p class="card-text">${job.title}</p>
+<a href="${job.link}" class="btn btn-primary"> Read </a>
   </div>
 </div>
-
-
         `;
         jobCardContainer.appendChild(jobCard);
       }
