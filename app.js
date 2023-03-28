@@ -1,10 +1,13 @@
-
-
+  import axios from './*/axios'
  export default function foo() {
- require("dotenv").config();
- const apiKey = process.env.KEY; // replace with your Airtable API key
-    const baseId =  process.env.BASE_ID; // replace with your Airtable base ID
-    const tableName =  process.env.TABLE_NAME; // replace with the name of your Airtable table
+
+  require("dotenv").config();
+  console.log(process.env + "test")
+
+  const apiKey = process.env.MYKEY; // replace with your Airtable API key
+  console.log(apiKey)
+  const baseId =  process.env.MYBASE_ID; // replace with your Airtable base ID
+    const tableName =  process.env.MYTABLE_NAME; // replace with the name of your Airtable table
 
     const jobCardContainer = document.getElementById('job-cards');
 
