@@ -81,7 +81,7 @@
 
         const description = document.createElement("p");
         description.classList.add("card-text");
-        inputDateString = record.fields.PublishDate;
+        const inputDateString = record.fields.PublishDate;
         const formattedDate = formatDate(inputDateString);
         console.log(formattedDate); // Output: "29 March 2023"
         description.textContent = inputDateString;
