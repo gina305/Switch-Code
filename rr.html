@@ -58,10 +58,8 @@
       const container = document.getElementById("data-container");
       records.forEach((record) => {
 
-        const status = record.fields.ImageURL;
+      
 
-        if (status="Published") {
-        
 
         console.log(record);
         const col = document.createElement("div");
@@ -102,7 +100,6 @@
         col.appendChild(card);
         container.appendChild(col);
       });
-     }
     }
 
     fetchData();
