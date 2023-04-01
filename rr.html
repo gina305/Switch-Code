@@ -83,7 +83,7 @@
         const inputDateString = record.fields.PublishDate;
         const formattedDate = "Published " & formatDate(inputDateString);
         console.log(typeof(formattedDate)); // Output: "29 March 2023"
-        description.textContent = ;
+        description.textContent = formattedDate;
         cardBody.appendChild(description);
 
         const link = document.createElement("a");
