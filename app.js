@@ -1,10 +1,16 @@
-  import axios from '/axios'
+import { env } from 'process';
   const dotenv = require('dotenv');
-dotenv.config();
+          import axios from '/axios'
+    dotenv.config();
+
+    const cors = require('cors'); 
+
+
+    app.use(cors());
   export default function foo() {
 
 
-  console.log(process.env + "test")
+  window.alert(process.env + "test");
 
   const apiKey1 = process.env.MY_KEY; // replace with your Airtable API key
   console.log("apiKey1")
