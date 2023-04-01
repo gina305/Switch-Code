@@ -82,7 +82,7 @@
         description.classList.add("card-text");
         const inputDateString = record.fields.PublishDate;
         const formattedDate = formatDate(inputDateString);
-        console.log(formattedDate); // Output: "29 March 2023"
+        console.log(typeof(formattedDate)); // Output: "29 March 2023"
         description.textContent = "Published " & formattedDate;
         cardBody.appendChild(description);
 
