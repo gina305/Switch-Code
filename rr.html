@@ -81,9 +81,9 @@
         const description = document.createElement("p");
         description.classList.add("card-text");
         const inputDateString = record.fields.PublishDate;
-        const formattedDate = formatDate(inputDateString);
+        const formattedDate = "Published " & formatDate(inputDateString);
         console.log(typeof(formattedDate)); // Output: "29 March 2023"
-        description.textContent = "Published " & formattedDate;
+        description.textContent = ;
         cardBody.appendChild(description);
 
         const link = document.createElement("a");
