@@ -51,7 +51,7 @@
   const month = months[date.getMonth()];
   const year = date.getFullYear();
 
-  return `${day} ${month} ${year}`;
+  return `Published ${day} ${month} ${year}`;
 }
 
 
@@ -81,7 +81,7 @@
         const description = document.createElement("p");
         description.classList.add("card-text");
         const inputDateString = record.fields.PublishDate;
-        const formattedDate = "Published " & formatDate(inputDateString).toString();
+        const formattedDate = formatDate(inputDateString);
         console.log(typeof(formattedDate)); // Output: "29 March 2023"
         description.textContent = formattedDate;
         cardBody.appendChild(description);
