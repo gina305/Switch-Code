@@ -17,9 +17,9 @@
   </div>
 
   <script>
-    const apiKey = "keyUKafa60cDwHmoq";
-    const baseId = "app32VEPUDOKJwj8t";
-    const tableName = "tblUiiegxy2tuGwCx";
+    const apiKey = process.env.MY_KEY
+    const baseId = process.env.MY_BASEID;
+    const tableName =process.env.MY_TABLENAME;
 
     async function fetchData() {
       try {
