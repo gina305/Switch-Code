@@ -57,12 +57,13 @@
 
       const container = document.getElementById("data-container");
       records.forEach((record) => {
+        ad= record.fields.Advertise
 
-        Advertise = record.fields.Advertise;
 
-        if (Advertise = true) {
+        if (ad=true) {
           
-        
+    
+
         console.log(record);
         const col = document.createElement("div");
         col.classList.add("col-md-4");
@@ -102,8 +103,7 @@
         card.appendChild(cardBody);
         col.appendChild(card);
         container.appendChild(col);
-
-      );
+      }
       });
     }
 
