@@ -1,4 +1,5 @@
 require('dotenv').config();
+require('dotenv-webpack');
 
 const apiKey = process.env.MY_KEY;
     const baseId = process.env.MY_BASEID;
