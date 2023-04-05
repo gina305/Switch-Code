@@ -16,7 +16,6 @@ jobs:
     - name: Build application
       run: npm run build
       env:
-        PUBLIC_URL: https://example.com/my-app
         MY_KEY: ${{ secrets.MY_KEY }}
         MY_BASEID: ${{ secrets.MY_BASEID }}
         MY_TABLENAME: ${{ secrets.MY_TABLENAME }}
