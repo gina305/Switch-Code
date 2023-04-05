@@ -23,5 +23,10 @@
   "repository": {
     "type": "git",
     "url": "Switch-Code"
-  }
+  },
+  "keywords": [
+    "cyber",
+    "cloud",
+    "blog"
+  ]
 }
