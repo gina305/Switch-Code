@@ -1,7 +1,8 @@
+require('dotenv').config();
 
 const apiKey = process.env.MY_KEY;
-    const baseId = process.env.MY_BASEID;
-    const tableName =process.env.MY_TABLENAME;
+const baseId = process.env.MY_BASEID;
+const tableName =process.env.MY_TABLENAME;
 
     async function fetchData() {
       try {
