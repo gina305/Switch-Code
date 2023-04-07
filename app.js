@@ -1,8 +1,9 @@
-require('dotenv').config();
+import config from "./config.js";
 
-const apiKey = process.env.MY_KEY;
-const baseId = process.env.MY_BASEID;
-const tableName =process.env.MY_TABLENAME;
+
+const apiKey = config.MY_KEY;
+const baseId = config.MY_BASEID;
+const tableName = config.MY_TABLENAME;
 
     async function fetchData() {
       try {
@@ -40,53 +41,46 @@ const tableName =process.env.MY_TABLENAME;
 
       const container = document.getElementById("data-container");
       records.forEach((record) => {
-        ad= record.fields.Advertise
-
-
-        if (ad=true) {
-          
+        const ad = record.fields.Advertise;
     
-
-        console.log(record);
-        const col = document.createElement("div");
-        col.classList.add("col-md-4");
-        col.style.textAlign = "center";
-
-        const card = document.createElement("div");
-        card.classList.add("card", "my-3");
-
-        const img = document.createElement("img");
-        img.src = record.fields.ImageURL;
-        img.classList.add("card-img-top");
-        img.alt = record.fields.Title;
-        card.appendChild(img);
-
-        const cardBody = document.createElement("div");
-        cardBody.classList.add("card-body");
-
-        const title = document.createElement("h5");
-        title.classList.add("card-title");
-        title.textContent = record.fields.Title;
-        cardBody.appendChild(title);
-
-        const description = document.createElement("p");
-        description.classList.add("card-text");
-        const inputDateString = record.fields.PublishDate;
-        const formattedDate = formatDate(inputDateString);
-        console.log(typeof(formattedDate)); // Output: "29 March 2023"
-        description.textContent = formattedDate;
-        cardBody.appendChild(description);
-
-        const link = document.createElement("a");
-        link.href = record.fields.Link;
-        link.classList.add("btn", "btn-primary");
-        link.textContent = "Read more";
-        cardBody.appendChild(link);
-
-        card.appendChild(cardBody);
-        col.appendChild(card);
-        container.appendChild(col);
-      }
+        if (ad == true) {
+          const col = document.createElement("div");
+          col.classList.add("col-md-4", "mb-4");
+    
+          const card = document.createElement("div");
+          card.classList.add("card", "h-100", "shadow-sm");
+    
+          const img = document.createElement("img");
+          img.src = record.fields.ImageURL;
+          img.classList.add("card-img-top");
+          img.alt = record.fields.Title;
+          card.appendChild(img);
+    
+          const cardBody = document.createElement("div");
+          cardBody.classList.add("card-body", "d-flex", "flex-column");
+    
+          const title = document.createElement("h5");
+          title.classList.add("card-title");
+          title.textContent = record.fields.Title;
+          cardBody.appendChild(title);
+    
+          const description = document.createElement("p");
+          description.classList.add("card-text", "text-muted", "mb-auto");
+          const inputDateString = record.fields.PublishDate;
+          const formattedDate = formatDate(inputDateString);
+          description.textContent = formattedDate;
+          cardBody.appendChild(description);
+    
+          const link = document.createElement("a");
+          link.href = record.fields.Link;
+          link.classList.add("btn", "btn-primary", "mt-auto");
+          link.textContent = "Read more";
+          cardBody.appendChild(link);
+    
+          card.appendChild(cardBody);
+          col.appendChild(card);
+          container.appendChild(col);
+        }
       });
     }
 
