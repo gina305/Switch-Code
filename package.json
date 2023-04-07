@@ -1,8 +1,8 @@
 {
   "name": "switch-code",
   "version": "1.0.0",
-  "description": "* Axios * dotenv *npm install webpack dotenv npm install dotenv-webpack --save-dev rm -rf node_modules && npm install",
-  "main": "index.js",
+  "description": "* Axios * dotenv *npm install webpack dotenv npm install dotenv-webpack --save-dev",
+ 
   "dependencies": {
     "acorn": "^8.8.2",
     "acorn-import-assertions": "^1.8.0",
