@@ -1,6 +1,5 @@
 import config from "./config.js";
 
-
 const apiKey = config.MY_KEY;
 const baseId = config.MY_BASEID;
 const tableName = config.MY_TABLENAME;
