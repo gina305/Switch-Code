@@ -2,7 +2,6 @@
   "name": "switch-code",
   "version": "1.0.0",
   "description": "* Axios * dotenv *npm install webpack dotenv npm install dotenv-webpack --save-dev",
- 
   "dependencies": {
     "acorn": "^8.8.2",
     "acorn-import-assertions": "^1.8.0",
@@ -51,12 +50,14 @@
     "webpack-sources": "^3.2.3"
   },
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "parcel": "^2.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --public-url ./",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
