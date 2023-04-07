@@ -47,7 +47,7 @@ const tableName = config.MY_TABLENAME;
           col.classList.add("col-md-4", "mb-4");
     
           const card = document.createElement("div");
-          card.classList.add("card", "h-100", "shadow-sm");
+          card.classList.add("card");
     
           const img = document.createElement("img");
           img.src = record.fields.ImageURL;
