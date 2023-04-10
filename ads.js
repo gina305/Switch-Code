@@ -15,13 +15,12 @@ axios.get(`https://api.airtable.com/v0/${baseId}/${tableName}?view=Grid%20view`,
     title: record.fields['Job Title'],
     company: record.fields['Company'],
     link: record.fields['Link'],
-   
-
+    active: record.fields['Active']
   }));
 
   jobAds.forEach(job => {
 
-    if(job.active = "Yes"){
+    if(${job.active} == "Yes"){
     const jobCard = document.createElement('div');
     jobCard.classList.add('col');
     jobCard.innerHTML = `
