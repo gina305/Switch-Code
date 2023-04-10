@@ -1,60 +1,42 @@
-import { env } from 'process';
-  const dotenv = require('dotenv');
-          import axios from '/axios'
-    dotenv.config();
+import config from "./config.js";
 
-    const cors = require('cors'); 
+const apiKey1 = config.MY_KEY; // replace with your Airtable API key
+const baseId = config.MY_BASEID; // replace with your Airtable base ID
+const tableName = config.MY_ADS; // replace with the name of your Airtable table
 
+const jobCardContainer = document.getElementById('job-cards');
 
-    app.use(cors());
-  export default function foo() {
+axios.get(`https://api.airtable.com/v0/${baseId}/${tableName}?view=Grid%20view`, {
+  headers: { 'Authorization': `Bearer ${apiKey1}` }
+})
+.then(response => {
+  console.log(response.data)
+  const jobAds = response.data.records.map(record => ({
+    title: record.fields['Job Title'],
+    company: record.fields['Company'],
+    link: record.fields['Link'],
+   
 
+  }));
 
-  window.alert(process.env + "test");
+  jobAds.forEach(job => {
 
-  const apiKey1 = process.env.MY_KEY; // replace with your Airtable API key
-  console.log("apiKey1")
-  const baseId =  process.env.MY_BASEID; // replace with your Airtable base ID
-    const tableName =  process.env.MY_TABLENAME; // replace with the name of your Airtable table
-
-    const jobCardContainer = document.getElementById('job-cards');
-
-    axios.get(`https://api.airtable.com/v0/${baseId}/${tableName}?view=Grid%20view`, {
-      headers: { 'Authorization': `Bearer ${apiKey1}` }
-    })
-    .then(response => {
-      const jobAds = response.data.records.map(record => ({
-        title: record.fields['Title'],
-        pubDate: record.fields['Publish Date'],
-        link: record.fields['Link'],
-        img: record.fields['image']
-      }));
-
-      jobAds.forEach(job => {
-
-      
-
-        if(job.active = "Yes"){
-        const jobCard = document.createElement('div');
-        jobCard.classList.add('col');
-        jobCard.innerHTML = `
+    if(job.active = "Yes"){
+    const jobCard = document.createElement('div');
+    jobCard.classList.add('col');
+    jobCard.innerHTML = `
 <div class="card text-center" style="width: 18rem;"> 
-  <img class="card-img-top" src=${job.img[0].url} alt="Card image cap">
   <div class="card-body">
     <p class="card-text">${job.title}</p>
-<a href="${job.link}" class="btn btn-primary"> Read </a>
+    <i>${job.company}</i>
+    <br>
+    <a href="${job.link}" class="btn btn-primary" style="padding: 5px;margin:5px"> Apply Now </a>
   </div>
-</div>
-        `;
+</div>`;
 
-        
-        jobCardContainer.appendChild(jobCard);
-      }
-      });
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
-export const blogImport = foo ();
+    jobCardContainer.appendChild(jobCard);
+  }});
+})
+.catch(error => {
+  console.error(error);
+});

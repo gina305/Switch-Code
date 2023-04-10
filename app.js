@@ -84,3 +84,5 @@ const tableName = config.MY_TABLENAME;
     }
 
     fetchData();
+
+    

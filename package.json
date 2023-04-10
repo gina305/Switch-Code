@@ -33,6 +33,7 @@
     "mime-types": "^2.1.35",
     "neo-async": "^2.6.2",
     "node-releases": "^2.0.10",
+    "openai": "^3.2.1",
     "picocolors": "^1.0.0",
     "punycode": "^2.3.0",
     "randombytes": "^2.1.0",
