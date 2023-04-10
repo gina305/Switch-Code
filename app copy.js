@@ -46,6 +46,8 @@ import { env } from 'process';
   </div>
 </div>
         `;
+
+        
         jobCardContainer.appendChild(jobCard);
       }
       });
